@@ -1,0 +1,116 @@
+﻿@model IEnumerable<WebApplication1.Models.Customers>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section styles
+{
+    <style>
+        thead {
+            background-color: cadetblue;
+        }
+    </style>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="CustomersTable" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fax)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { CustomerID = item.CustomerID }) |
+                @Html.ActionLink("Details", "Details", new { CustomerID = item.CustomerID }) |
+                @Html.ActionLink("Delete", "Delete", new { CustomerID = item.CustomerID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*引用BundleConfig*@
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryfreezeheader")
+    <script>
+        $(document).ready(function () {
+            $("#CustomersTable").freezeHeader({
+                //使用jQueryFreezeHeader中的這個方法freezeHeader
+                'width': '100%',
+                'height': '600px'
+            });
+        });
+    </script>
+}
