@@ -4,14 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-@section styles
-{
-    <style>
-        thead {
-            background-color: cadetblue;
-        }
-    </style>
-}
 
 <h2>Index</h2>
 
@@ -104,13 +96,22 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryfreezeheader")
-    <script>
+
+    @*<script>
         $(document).ready(function () {
             $("#CustomersTable").freezeHeader({
                 //使用jQueryFreezeHeader中的這個方法freezeHeader
                 'width': '100%',
                 'height': '600px'
             });
+
+        });
+    </script>*@
+
+    <script>
+        $(document).ready(function () {
+            HeadTable()
         });
     </script>
 }
+
